@@ -73,3 +73,51 @@ function clearError() {
     errorMessage.textContent = "";
     errorMessage.classList.add("hidden");
 }
+
+
+
+// ********************************** Current Location weather ******************************
+// Handle location button click
+locationBtn.addEventListener("click", () => {
+
+    
+    if (!navigator.geolocation) {
+        showError("Location is not supported by this browser");
+        return;
+    }
+
+    clearError();
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            fetchWeatherByLocation(latitude, longitude);
+        },
+        () => {
+            showError("Unable to get your location");
+        }
+    );
+});
+
+
+//*************************** */ Fetch weather data using latitude and longitude**************************
+function fetchWeatherByLocation(lat, lon) {
+    const apiKey = "myWeatherApiKey";
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Unable to fetch location weather");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Location weather data:", data);
+        })
+        .catch(error => {
+            showError(error.message);
+        });
+}
