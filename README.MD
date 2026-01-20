@@ -42,9 +42,9 @@ This project is created as part of a **web development assignment** to understan
 - **Browser Geolocation API** – To get user’s current location  
 
 
-## HOW TO Run the Project
+## How to Run the Project
 -Install Live Server extension in VS Code
 -Right-click on index.html → Open with Live Server
 
-## AUTHOR
+## Author  
  VIKASH RAW
