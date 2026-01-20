@@ -57,6 +57,7 @@ function fetchWeatherByCity(city) {
         })
         .then(data => {
             updateWeatherUI(data);
+             saveCity(data.name);
         })
         .catch(error => {
             showError(error.message);
