@@ -13,8 +13,12 @@ const errorMessage = document.querySelector("section p");
 // Recent search 
 const recentDropdown = document.querySelector("select");
 
-// confirm 
-console.log("JS loaded");
+// Weather display elements
+const cityText = document.getElementById("city-name");
+const tempText = document.getElementById("temperature");
+const humidityText = document.getElementById("humidity");
+const windText = document.getElementById("wind");
+const conditionText = document.getElementById("condition");
 
 
 //****************************  City Search Validation  *********************************
@@ -52,7 +56,7 @@ function fetchWeatherByCity(city) {
             return response.json();
         })
         .then(data => {
-            console.log("Weather data:", data);
+            updateWeatherUI(data);
         })
         .catch(error => {
             showError(error.message);
@@ -104,7 +108,6 @@ locationBtn.addEventListener("click", () => {
 
 //*************************** */ Fetch weather data using latitude and longitude**************************
 function fetchWeatherByLocation(lat, lon) {
-    const apiKey = "myWeatherApiKey";
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
     fetch(url)
@@ -115,9 +118,19 @@ function fetchWeatherByLocation(lat, lon) {
             return response.json();
         })
         .then(data => {
-            console.log("Location weather data:", data);
+            updateWeatherUI(data);
         })
         .catch(error => {
             showError(error.message);
         });
+}
+
+
+//**************************** Update weather data on UI ******************************
+function updateWeatherUI(data) {
+    cityText.textContent = data.name;
+    tempText.textContent = Math.round(data.main.temp);
+    humidityText.textContent = data.main.humidity + "%";
+    windText.textContent = data.wind.speed + " m/s";
+    conditionText.textContent = data.weather[0].main;
 }
