@@ -65,20 +65,6 @@ function fetchWeatherByCity(city) {
 
 
 
-// ******************************** Error Handling Functions ******************************
-
-
-function showError(message) {
-    errorMessage.textContent = message;
-    errorMessage.classList.remove("hidden");
-}
-
-function clearError() {
-    errorMessage.textContent = "";
-    errorMessage.classList.add("hidden");
-}
-
-
 
 // ********************************** Current Location weather ******************************
 // Handle location button click
@@ -133,4 +119,30 @@ function updateWeatherUI(data) {
     humidityText.textContent = data.main.humidity + "%";
     windText.textContent = data.wind.speed + " m/s";
     conditionText.textContent = data.weather[0].main;
+}
+
+
+// ******************************** Error Handling Functions ******************************
+
+
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.classList.remove("hidden");
+}
+
+function clearError() {
+    errorMessage.textContent = "";
+    errorMessage.classList.add("hidden");
+}
+
+// ************************** Save city in local storage **************************
+function saveCity(city) {
+    let cities = JSON.parse(localStorage.getItem("recentCities")) || [];
+
+    if (!cities.includes(city)) {
+        cities.push(city);
+        localStorage.setItem("recentCities", JSON.stringify(cities));
+    }
+
+    updateDropdown();
 }
