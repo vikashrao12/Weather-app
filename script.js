@@ -174,3 +174,11 @@ function updateDropdown() {
         recentDropdown.appendChild(option);
     });
 }
+// ********************** Add dropdown city selection  *************************
+recentDropdown.addEventListener("change", () => {
+    if (recentDropdown.value !== "") {
+        fetchWeatherByCity(recentDropdown.value);
+    }
+});
+
+updateDropdown();
