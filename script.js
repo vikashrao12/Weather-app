@@ -146,3 +146,30 @@ function saveCity(city) {
 
     updateDropdown();
 }
+
+// ************************** Update recent cities dropdown **************************
+
+
+function updateDropdown() {
+    const cities = JSON.parse(localStorage.getItem("recentCities")) || [];
+    recentDropdown.innerHTML = "";
+
+    if (cities.length === 0) {
+        recentDropdown.classList.add("hidden");
+        return;
+    }
+
+    recentDropdown.classList.remove("hidden");
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select a city";
+    recentDropdown.appendChild(defaultOption);
+
+    cities.forEach(city => {
+        const option = document.createElement("option");
+        option.value = city;
+        option.textContent = city;
+        recentDropdown.appendChild(option);
+    });
+}
