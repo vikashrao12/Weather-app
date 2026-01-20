@@ -32,5 +32,44 @@ searchBtn.addEventListener("click", () => {
 
     // If input is valid
     clearError();
-    console.log("Searching for city:", cityName);
+    fetchWeatherByCity(cityName);
 });
+
+
+// ****************************** Fetch Weather Data by City  *******************************
+
+const apiKey = "be62fc07656cd48c1dada19f48026742 ";
+
+function fetchWeatherByCity(city) {
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("City not found");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data:", data);
+        })
+        .catch(error => {
+            showError(error.message);
+        });
+}
+
+
+
+// ******************************** Error Handling Functions ******************************
+
+
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.classList.remove("hidden");
+}
+
+function clearError() {
+    errorMessage.textContent = "";
+    errorMessage.classList.add("hidden");
+}
