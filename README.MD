@@ -10,6 +10,9 @@ The application also saves recently searched cities to improve user experience.
 This project is created as part of a **web development assignment** to understand API integration, responsive UI design, and JavaScript DOM manipulation.
 
 
+## API used
+  Openweathermap
+
 
 ##  Objectives
 - Learn how to integrate a third-party API in JavaScript
@@ -32,6 +35,11 @@ This project is created as part of a **web development assignment** to understan
 - Input validation and proper error messages  
 - Responsive design for multiple screen sizes  
 
+
+## Folder structure
+ - index.html
+ - script.js
+ - README.MD  
 
 
 ##  Technologies Used
