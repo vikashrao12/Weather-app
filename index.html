@@ -5,79 +5,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Forecast App</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-blue-100 min-h-screen flex items-center justify-center">
 
   <!-- App Container -->
-  <div>
+  <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
 
     <!-- App Heading -->
-    <header>
-      <h1>Weather Forecast App</h1>
+    <header class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-blue-600">
+        Weather Forecast App
+      </h1>
+      <p class="text-gray-500 text-sm">
+        Get current weather and 5-day forecast
+      </p>
     </header>
 
     <!-- Search Section -->
-    <section>
-      <input type="text" placeholder="Enter city name">
-      <button>Search</button>
-      <button>Use My Location</button>
+    <section class="flex flex-col sm:flex-row gap-3 mb-6">
+      <input type="text" placeholder="Enter city name"
+        class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+        Search
+      </button>
+      <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+        Use My Location
+      </button>
     </section>
 
     <!-- Error Message -->
-    <section>
-      <p>Error message will appear here</p>
+    <section class="mb-6">
+      <p class="text-red-500 text-center hidden">
+        Error message will appear here
+      </p>
     </section>
 
     <!-- Current Weather Section -->
-    <section>
-      <h2>Current Weather</h2>
-      <p>City: --</p>
-      <p>Temperature: -- °C</p>
-      <p>Humidity: --</p>
-      <p>Wind Speed: --</p>
-      <p>Condition: --</p>
+    <section class="mb-6 bg-blue-50 p-4 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4 text-blue-700">
+        Current Weather
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+        <p><strong>City:</strong> <span id="city-name">--</span></p>
+        <p><strong>Temperature:</strong> <span id="temperature">--</span> °C</p>
+        <p><strong>Humidity:</strong> <span id="humidity">--</span></p>
+        <p><strong>Wind Speed:</strong> <span id="wind">--</span></p>
+        <p><strong>Condition:</strong> <span id="condition">--</span></p>
+
+
+      </div>
     </section>
 
     <!-- Temperature Toggle -->
-    <section>
-      <button>°C</button>
-      <button>°F</button>
+    <section class="flex justify-center gap-4 mb-6">
+      <button class="border px-4 py-1 rounded-lg hover:bg-gray-100">
+        °C
+      </button>
+      <button class="border px-4 py-1 rounded-lg hover:bg-gray-100">
+        °F
+      </button>
     </section>
 
-    <!-- Recent Searches  -->
-    <section>
-      <label for="recent-cities">Recent Searches:</label>
-      <select id="recent-cities">
+    <!-- Recent Searches -->
+    <section class="mb-6">
+      <label class="block text-gray-700 mb-2">
+        Recent Searches
+      </label>
+      <select class="w-full border border-gray-300 rounded-lg px-4 py-2">
         <option>Select a city</option>
       </select>
     </section>
 
-    <!--Forecast -->
+    <!-- Forecast -->
     <section>
-      <h2>5-Day Forecast</h2>
+      <h2 class="text-xl font-semibold mb-4 text-blue-700">
+        5-Day Forecast
+      </h2>
 
-      <div>
-        <p>Date: --</p>
-        <p>Temp: --</p>
-        <p>Wind: --</p>
-        <p>Humidity: --</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <p>Date: --</p>
+          <p>Temp: --</p>
+          <p>Wind: --</p>
+          <p>Humidity: --</p>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <p>Date: --</p>
+          <p>Temp: --</p>
+          <p>Wind: --</p>
+          <p>Humidity: --</p>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-lg text-center">
+          <p>Date: --</p>
+          <p>Temp: --</p>
+          <p>Wind: --</p>
+          <p>Humidity: --</p>
+        </div>
       </div>
-
-      <div>
-        <p>Date: --</p>
-        <p>Temp: --</p>
-        <p>Wind: --</p>
-        <p>Humidity: --</p>
-      </div>
-
-      <div>
-        <p>Date: --</p>
-        <p>Temp: --</p>
-        <p>Wind: --</p>
-        <p>Humidity: --</p>
-      </div>
-
     </section>
 
   </div>
